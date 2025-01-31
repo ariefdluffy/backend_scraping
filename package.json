@@ -5,9 +5,7 @@
   "scripts": {
     "start": "node server.js"
   },
-  "engines": {
-    "node": "16.x"
-  },
+  
   "keywords": [],
   "author": "",
   "license": "ISC",
