@@ -76,7 +76,7 @@ app.get("/api/berita/detail", async (req, res) => {
 
     let title = $(".entry-title").text().trim();
     let content = $(".entry-content").text().trim();
-    let publishedDate = $(".meta-item span").text().trim();
+    let publishedDate = $(".meta-item span").first().trim();
     let image = $(".herald-post-thumbnail img").attr("src");
 
     res.json({ title, content, publishedDate, image });
