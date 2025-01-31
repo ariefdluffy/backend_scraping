@@ -76,12 +76,13 @@ app.get("/api/berita/detail", async (req, res) => {
 
     let title = $(".entry-title").text().trim();
     let content = $(".entry-content").text().trim();
-    let publishedDate = $(".meta-item span").first().trim();
+    // let publishedDate = $(".meta-item span.updated").text();
     let image = $(".herald-post-thumbnail img").attr("src");
 
-    res.json({ title, content, publishedDate, image });
+    res.json({ title, content, image });
   } catch (error) {
     res.status(500).json({ message: "Gagal mengambil detail berita", error });
+    console.log(error);
   }
 });
 
