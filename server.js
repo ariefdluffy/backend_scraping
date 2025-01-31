@@ -86,6 +86,10 @@ app.get("/api/berita/detail", async (req, res) => {
   }
 });
 
+app.get("/", (req, res) => {
+  res.json({ message: "Server ON" });
+});
+
 // Menjalankan server
 app.listen(PORT, () => {
   console.log(`Server berjalan di http://localhost:${PORT}`);
