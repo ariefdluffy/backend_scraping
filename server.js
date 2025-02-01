@@ -21,10 +21,18 @@ app.get("/api/jadwal", async (req, res) => {
       let namaPelatihan = $(element).find("td > a").text().trim();
       let linkRegis = $(element).find("td:nth-child(2) a").attr("href");
       let jenisPelatihan = $(element).find("td:nth-child(3)").text().trim();
+      let tanggalPelatihan = $(element).find("td:nth-child(4)").text().trim();
       let kuota = $(element).find("td:nth-child(6)").text().trim();
       let status = $(element).find("td:nth-child(7) span").text().trim();
 
-      jadwal.push({ linkRegis, namaPelatihan, jenisPelatihan, kuota, status });
+      jadwal.push({
+        linkRegis,
+        namaPelatihan,
+        jenisPelatihan,
+        kuota,
+        status,
+        tanggalPelatihan,
+      });
     });
 
     res.json(jadwal);
