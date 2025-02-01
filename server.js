@@ -82,7 +82,7 @@ app.get("/api/berita/detail", async (req, res) => {
     const { data } = await axios.get(url);
     const $ = cheerio.load(data);
 
-    let title = $(".entry-title").text().trim();
+    let title = $("h1").text();
     let content = $(".entry-content").text().trim();
     // let publishedDate = $(".meta-item span.updated").text();
     let image = $(".herald-post-thumbnail img").attr("src");
