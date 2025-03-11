@@ -52,6 +52,9 @@ app.use(cors());
 const KEYWORDS = [
   "Orientasi",
   "Pelatihan",
+  "Sertifikasi",
+  "Uji Kompetensi",
+  "Teknis",
   "Sosialisasi",
   "Pengadaan",
   "Rapat",
@@ -66,10 +69,10 @@ async function scrapeData() {
     const $ = cheerio.load(data);
 
     let upcomingEvents = [];
+    // console.log("data");
 
     $("tr").each((index, row) => {
       const columns = $(row).find("td");
-
       if (columns.length >= 6) {
         // Ambil elemen <a> dalam kolom Nama Pelatihan
         const linkElement = $(columns[1]).find("a");
@@ -81,6 +84,7 @@ async function scrapeData() {
 
         const status = $(columns[6]).text().trim(); // Ambil status pelatihan
 
+        // console.log("data :", namaPelatihan);
         const event = {
           namaPelatihan,
           linkRegis,
@@ -102,7 +106,8 @@ async function scrapeData() {
         }
       }
     });
-
+    // console.log(upcomingEvents);
+    // console.log("data :", upcomingEvents);
     return upcomingEvents;
   } catch (error) {
     console.error("Error saat scraping data Jadwal:", error);
@@ -113,6 +118,7 @@ async function scrapeData() {
 // Endpoint API untuk mendapatkan jadwal
 app.get("/api/jadwal/filter", async (req, res) => {
   const jadwal = await scrapeData();
+  console.log(jadwal);
   res.json(jadwal);
 });
 
@@ -263,6 +269,8 @@ app.post("/api/alumni", async (req, res) => {
         tanggalPelatihan: $result(tds[5]).text().trim(),
       });
     });
+
+    console.log("alumni: ", alumniList);
 
     res.json({
       success: true,
