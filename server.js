@@ -51,6 +51,7 @@ app.use(cors());
 // Kata kunci untuk filter pelatihan
 const KEYWORDS = [
   "Orientasi",
+  "Sharing",
   "Pelatihan",
   "Sertifikasi",
   "Uji Kompetensi",
